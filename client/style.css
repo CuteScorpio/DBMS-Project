@@ -10,6 +10,9 @@ body {
 }
 
 .header {
+    position:fixed;
+    top:0;
+    width: 100%; 
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,6 +20,7 @@ body {
     height: 100px;
     background-color: #8bc34a;
     color: #3E2723;
+    z-index: 1000;
 }
 
 .nav {
@@ -135,4 +139,51 @@ body {
     .nav-menu-btn i:hover {
         background: rgba(255, 255, 255, 0.35);
     }
+}
+
+.mainimg{
+    background-image: url(images/heroimg.jpg);
+    background-size : cover;
+    height:500px;
+}
+
+
+
+ .slider {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    height: 100vh;
+    background-color: lightgray; 
+} 
+
+.box {
+   
+    height: 500px;
+    width: 800px;
+    background-color: white;
+    border-radius: 30px;
+    background-size: cover;
+    background-position: center;
+    animation: imageChange 16s infinite;
+    margin-top:0%;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+}
+p{
+    color:black;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: xx-large;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+@keyframes imageChange {
+    0% { background-image: url('images/img1\ \(2\).jpg'); }
+    25% { background-image: url('images/img2.jpg'); }
+    50% { background-image: url('images/img5.jpg'); }
+    75% { background-image: url('images/img4.jpg'); }
+    100% { background-image: url('images/img1\ \(2\).jpg'); } 
 }
