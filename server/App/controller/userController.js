@@ -5,8 +5,9 @@ let userSignup = async (req, res) => {
 
     let hashedPassword = await bcrypt.hash(req.body.password, 10);
     let user = new userModel({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
         email: req.body.email,
-        username: req.body.username,
         password: hashedPassword
     });
     await user.save()
@@ -40,14 +41,34 @@ let userLogin = async (req, res) => {
         await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } });
 
         res.status(200).json({ message: "Login successful" });
-        console.log("User logged in:", user.username);
+        console.log("User logged in:", user.firstname + " " + user.lastname);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+};
+
+let userLogout = async (req, res) => {
+    const username = req.body.username;
+
+    try {
+        let user = await userModel.findOne({ username: username });
+
+        if (!user) {
+            return res.status(400).json({ error: "User not found" });
+        }
+
+        // Update loginStatus to false
+        await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: false } });
+
+        res.status(200).json({ message: "Logout successful" });
+        console.log("User logged out:", user.username);
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 };
 
 module.exports = {
-    userSignup, userLogin
+    userSignup, userLogin, userLogout
 }
 
 

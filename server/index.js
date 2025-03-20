@@ -4,6 +4,8 @@ let mongoose = require('mongoose');
 const userRouter = require('./App/routes/userRoutes');
 let app = express();
 app.use(express.json());
+let cors = require('cors');
+app.use(cors());
 
 app.use('/user', userRouter);
 

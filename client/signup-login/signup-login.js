@@ -33,8 +33,8 @@ function myMenuFunction() {
     }
 
 
-let loginForm = document.querySelector(".login-container");
-let loginbtn = document.getElementById("loginbtn");
+let loginForm = document.getElementById("login");
+
 
 loginForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
@@ -64,8 +64,8 @@ loginForm.addEventListener("submit", async (event) =>{
 
 });
 
-let registerForm = document.querySelector(".register-container");
-let registerbtn = document.getElementById("registerbtn");
+let registerForm = document.getElementById("register");
+
 
 registerForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
