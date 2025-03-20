@@ -1,11 +1,11 @@
 require('dotenv').config();
 let express = require('express');
 let mongoose = require('mongoose');
-const productRouter = require('./App/routes/productRoutes');
+const userRouter = require('./App/routes/userRoutes');
 let app = express();
 app.use(express.json());
 
-app.use('/product', productRouter);
+app.use('/user', userRouter);
 
 // connect to MongoDB
 mongoose.connect(process.env.mongoURL)

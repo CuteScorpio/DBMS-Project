@@ -6,13 +6,20 @@ let productSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  price:{ Number,
+  price:{ 
+    type:Number,
     required: true,
   },
   category: {
     type :String,
   },
-  description: String,
+  description: {String,
+  },
+  stock: {
+    type: Number,
+    required: true,
+  },
+
 
 
 }); 
