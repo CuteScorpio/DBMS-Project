@@ -1,9 +1,9 @@
 let express=require('express');
 
-const {productInsert,productShow,productDelete,productUpdate}=require('../controller/productController');
+const { productDisplay}=require('../controller/productController');
 
 let productRouter=express.Router();
 
-
+productRouter.get("/display", productDisplay);
 
 module.exports=productRouter;

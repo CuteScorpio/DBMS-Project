@@ -5,9 +5,11 @@ const userRouter = require('./App/routes/userRoutes');
 let app = express();
 app.use(express.json());
 let cors = require('cors');
+const productRouter = require('./App/routes/productRoutes');
 app.use(cors());
 
-app.use('/user', userRouter);
+app.use('/user', userRouter); 
+app.use('/products', productRouter);
 
 // connect to MongoDB
 mongoose.connect(process.env.mongoURL)
