@@ -22,6 +22,10 @@ let userSchema = new mongoose.Schema({
         type: Boolean, 
         default: false 
     },
+    adminStatus: { 
+        type: Boolean, 
+        default: false 
+    }
 });
 
 userModel = mongoose.model('users', userSchema);

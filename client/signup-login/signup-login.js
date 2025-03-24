@@ -55,8 +55,15 @@ loginForm.addEventListener("submit", async (event) =>{
 
     if (response.ok) {
         const result = await response.json();
+        if(result.message == "Admin login successful"){
+            alert("Admin login Successfully!");
+            window.location.href = '../admin/admin.html';
+        }
+        else{
         console.log(result);
         alert("User login Successfully!");
+        window.location.href = '../dashboard/dashboard.html';
+        }
       } else {
         console.error("Failed to login user");
         alert("Failed to login user");
@@ -70,8 +77,8 @@ let registerForm = document.getElementById("register");
 registerForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
 
-    const firstName = document.getElementById("register_first_name").value; // Corrected ID
-    const lastName = document.getElementById("register_last_name").value; // Corrected ID
+    const firstName = document.getElementById("register_first_name").value; 
+    const lastName = document.getElementById("register_last_name").value; 
     const email = document.getElementById("register_email").value;
     const password = document.getElementById("register_password").value;
     const registerData = {

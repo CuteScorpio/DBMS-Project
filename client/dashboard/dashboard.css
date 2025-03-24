@@ -114,8 +114,10 @@ body {
     text-align: center;
     background-color: white;
 }
+
 .product-box img {
     width: 100%;
-    height: auto;
+    height: 300px; /* Set a fixed height for the images */
     border-radius: 10px;
+    object-fit: cover; /* Ensures the image covers the entire area while maintaining aspect ratio */
 }

@@ -7,7 +7,7 @@ async function fetchProducts() {
             const productBox = document.createElement('div');
             productBox.className = 'product-box';
             productBox.innerHTML = `
-                <img src="client/images/default.jpg" alt="${product.name}"  onerror="this.onerror=null;this.src='images/default.jpg';">
+                <img src="../images/${product.name}.jpg" alt="${product.name}" id="product-image"> 
                 <h2>${product.name}</h2>
                 <p>${product.description}</p>
                 <p>Price: $${product.price}</p>

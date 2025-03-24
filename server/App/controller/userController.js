@@ -34,14 +34,19 @@ let userLogin = async (req, res) => {
         // Compare hashed password
         let isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ error: "Invalid credentials" });
+          return res.status(400).json({ error: "Invalid credentials" });
         }
 
-        // Update loginStatus to true
-        await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } });
+        await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } }); 
+        if(user.adminStatus == true){
 
-        res.status(200).json({ message: "Login successful" });
-        console.log("User logged in:", user.firstname + " " + user.lastname);
+            console.log("Admin logged in:", user.firstname + " " + user.lastname);
+            return res.send({ message: "Admin login successful" });
+        }
+        else{
+         return res.send({ message: "User Login successful" });
+        }
+       
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
