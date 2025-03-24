@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link rel="stylesheet" href="add.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <nav class="nav">
+                <div class="nav-logo">
+                    <p>My Shop</p>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="#" class="link active">Orders</a></li>
+                        <li><a href="#" class="link">My Products</a></li>
+                        <li><a href="#" class="link">Add Products</a></li>
+                        <li><a href="#" class="link">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="nav-menu-btn">
+                    <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+                    <div class="cart-icon" id="cartIcon">
+                        <span id="cartCount">0</span>
+                    </div>
+                </div>
+                <div class="cart-sidebar" id="cartSidebar">
+                    <!-- <div class="cart-header">
+                        <span>Shopping Cart</span>
+                        <button id="closeCart">✖</button>
+                    </div>
+                    <div id="cartItems" class="cart-items"></div> -->
+                </div>
+            </nav>
+        </div>
+    </header>
+    <br><br><br><br><br><br>
+    <h3>Add New Product</h3>
+    <form id="addProductForm">
+        <label for="productName">Name:</label>
+        <input type="text" id="productName" name="productName" required><br><br>
+
+        <label for="productPrice">Price:</label>
+        <input type="number" id="productPrice" name="productPrice" required><br><br>
+
+        <label for="productQuantity">Quantity:</label>
+        <input type="number" id="productQuantity" name="productQuantity" required><br><br>
+        
+        <label for="productCategory">Category:</label>
+        <input type="text" id="productCatgory" name="productCategory" required><br><br>
+
+        <label for="productImage">Upload Image:</label>
+        <input type="file" id="productImage" name="productImage"accept="image/*" required><br><br>
+        
+        
+        <label for="productDescription">Description:</label>
+        <textarea id="productDescription" name="productDescription" required></textarea><br><br>
+        <button type="submit">Add Product</button>
+    </form>
+    <br>
+    <script src="add.js"></script>
+</body>
+</html>

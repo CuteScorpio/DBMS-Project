@@ -2,11 +2,15 @@ require('dotenv').config();
 let express = require('express');
 let mongoose = require('mongoose');
 const userRouter = require('./App/routes/userRoutes');
-let app = express();
-app.use(express.json());
-let cors = require('cors');
 const productRouter = require('./App/routes/productRoutes');
+let app = express();
+
+let cors = require('cors');
 app.use(cors());
+
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
+
 
 app.use('/user', userRouter); 
 app.use('/products', productRouter);

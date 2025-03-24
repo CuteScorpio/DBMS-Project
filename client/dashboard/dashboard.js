@@ -6,6 +6,7 @@ async function fetchProducts() {
         products.forEach(product => {
             const productBox = document.createElement('div');
             productBox.className = 'product-box';
+            productBox.id = '${product.name}';
             productBox.innerHTML = `
                 <img src="../images/${product.name}.jpg" alt="${product.name}" id="product-image"> 
                 <h2>${product.name}</h2>
@@ -20,4 +21,12 @@ async function fetchProducts() {
     }
 }
 
+
+
 fetchProducts();
+
+
+
+
+
+

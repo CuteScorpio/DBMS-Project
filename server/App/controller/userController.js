@@ -21,11 +21,11 @@ let userSignup = async (req, res) => {
 }
 
 let userLogin = async (req, res) => {
-    const username = req.body.username;
+    const email = req.body.email;
     const password = req.body.password;
     
     try {
-        let user = await userModel.findOne({ username: username });
+        let user = await userModel.findOne({ email: email });
 
         if (!user) {
             return res.status(400).json({ error: "User not found" });
@@ -40,11 +40,12 @@ let userLogin = async (req, res) => {
         await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } }); 
         if(user.adminStatus == true){
 
-            console.log("Admin logged in:", user.firstname + " " + user.lastname);
+            console.log("Admin logged in:", user.firstName + " " + user.lastName);
             return res.send({ message: "Admin login successful" });
         }
         else{
-         return res.send({ message: "User Login successful" });
+            console.log("User logged in:", user.firstName + " " + user.lastName);
+            return res.send({ message: "User Login successful" });
         }
        
     } catch (error) {

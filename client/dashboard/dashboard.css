@@ -121,3 +121,51 @@ body {
     border-radius: 10px;
     object-fit: cover; /* Ensures the image covers the entire area while maintaining aspect ratio */
 }
+
+
+
+
+
+.nav-user {
+    display: none; /* Hidden by default, shown via JS when logged in */
+}
+
+.user-profile {
+    position: relative;
+    cursor: pointer;
+    color: #fff; /* Matches navbar text color */
+    font-weight: 500; /* Matches link weight */
+    padding: 0 15px;
+    line-height: 100px; /* Aligns vertically with navbar */
+}
+
+.dropdown {
+    display: none; /* Hidden until clicked */
+    position: absolute;
+    top: 100%; /* Below the username */
+    right: 0;
+    background: rgba(255, 255, 255, 0.8); /* Matches button transparency */
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.dropdown ul li {
+    padding: 5px 0;
+}
+
+.dropdown ul li a {
+    color: #333; /* Readable on light background */
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dropdown ul li a:hover {
+    text-decoration: underline;
+}
