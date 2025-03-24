@@ -1,5 +1,5 @@
 async function fetchProducts() {
-    const response = await fetch("http://localhost:3000/products");
+    const response = await fetch("http://localhost:8000/order/display");
     const databases = await response.json();
     const container = document.getElementById("productContainer");
 
