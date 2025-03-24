@@ -55,8 +55,14 @@ loginForm.addEventListener("submit", async (event) =>{
 
     if (response.ok) {
         const result = await response.json();
+        if(result.message == "Admin login successful") {
+            window.location.href = "../admin/admin.html";
+            alert("Admin login Successfully!");
+        }
+        else{
         console.log(result);
         alert("User login Successfully!");
+        }
       } else {
         console.error("Failed to login user");
         alert("Failed to login user");

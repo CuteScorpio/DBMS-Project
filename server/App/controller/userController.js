@@ -39,8 +39,10 @@ let userLogin = async (req, res) => {
 
         // Update loginStatus to true
         await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } });
-
-        res.status(200).json({ message: "Login successful" });
+        if (user.adminStatus==true) {
+            return res.status(200).json({ message: "Admin login successful" });
+        }
+        res.status(200).json({ message: "User login successful" });
         console.log("User logged in:", user.firstname + " " + user.lastname);
     } catch (error) {
         res.status(500).json({ error: error.message });
