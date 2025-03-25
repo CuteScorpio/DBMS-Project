@@ -8,7 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #D7CCC8;
-    text-align: center;
+    /* text-align: center; */
 }
 
 .header {
@@ -92,6 +92,10 @@ body {
     display: none;
 }
 
+.add{
+    text-align:center;
+}
+
 form {
     margin: 20px auto;
     padding: 20px;
@@ -116,13 +120,37 @@ form input, form textarea {
     border-radius: 30px;
 }
 
-form button {
-    padding: 10px 20px;
+form input[type="file"] {
+    border:none;
+    border-radius: 30px;
+    background:none;
+    cursor: pointer;
+}
+
+form input[type="file"]::file-selector-button {
+    padding: 5px 10px;
     background-color: #8bc34a;
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display:block;
+}
+
+form input[type="file"]::file-selector-button:hover {
+    background-color: #7cb342;
+}
+
+
+form button {
+    padding: 10px 20px;
+    background-color: #8bc34a;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display:block;
+    margin:0 auto;
 }
 
 form button:hover {

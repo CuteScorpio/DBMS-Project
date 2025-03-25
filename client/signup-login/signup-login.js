@@ -6,35 +6,32 @@ function myMenuFunction() {
     } else {
         i.className = "nav-menu";
     }
-   }
+}
 
+var a = document.getElementById("loginBtn");
+var b = document.getElementById("registerBtn");
+var x = document.getElementById("login");
+var y = document.getElementById("register");
 
-    var a = document.getElementById("loginBtn");
-    var b = document.getElementById("registerBtn");
-    var x = document.getElementById("login");
-    var y = document.getElementById("register");
+function login() {
+    x.style.left = "4px";
+    y.style.right = "-520px";
+    a.className += " white-btn";
+    b.className = "btn";
+    x.style.opacity = 1;
+    y.style.opacity = 0;
+}
 
-    function login() {
-        x.style.left = "4px";
-        y.style.right = "-520px";
-        a.className += " white-btn";
-        b.className = "btn";
-        x.style.opacity = 1;
-        y.style.opacity = 0;
-    }
-
-    function register() {
-        x.style.left = "-510px";
-        y.style.right = "5px";
-        a.className = "btn";
-        b.className += " white-btn";
-        x.style.opacity = 0;
-        y.style.opacity = 1;
-    }
-
+function register() {
+    x.style.left = "-510px";
+    y.style.right = "5px";
+    a.className = "btn";
+    b.className += " white-btn";
+    x.style.opacity = 0;
+    y.style.opacity = 1;
+}
 
 let loginForm = document.getElementById("login");
-
 
 loginForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
@@ -55,24 +52,20 @@ loginForm.addEventListener("submit", async (event) =>{
 
     if (response.ok) {
         const result = await response.json();
-        if(result.message == "Admin login successful"){
+        if(result.message === "Admin login successful"){
             alert("Admin login Successfully!");
             window.location.href = '../admin/admin.html';
+        } else {
+            alert("User login Successfully!");
+            window.location.href = '../dashboard/dashboard.html';
         }
-        else{
-        console.log(result);
-        alert("User login Successfully!");
-        window.location.href = '../dashboard/dashboard.html';
-        }
-      } else {
+    } else {
         console.error("Failed to login user");
         alert("Failed to login user");
-      }
-
+    }
 });
 
 let registerForm = document.getElementById("register");
-
 
 registerForm.addEventListener("submit", async (event) =>{
     event.preventDefault();
@@ -99,9 +92,8 @@ registerForm.addEventListener("submit", async (event) =>{
         const result = await response.json();
         console.log(result);
         alert("User registered Successfully!");
-      } else {
+    } else {
         console.error("Failed to register user");
         alert("Failed to register user");
-      }
-
+    }
 });

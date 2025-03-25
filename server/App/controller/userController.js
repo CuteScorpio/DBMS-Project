@@ -37,17 +37,16 @@ let userLogin = async (req, res) => {
           return res.status(400).json({ error: "Invalid credentials" });
         }
 
-        await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } }); 
-        if(user.adminStatus == true){
-
+        // Update loginStatus to true
+        await userModel.updateOne({ _id: user._id }, { $set: { loginStatus: true } });
+         
+        if(user.adminStatus === true){
+            res.status(200).json({ message: "Admin login successful" });
             console.log("Admin logged in:", user.firstName + " " + user.lastName);
-            return res.send({ message: "Admin login successful" });
-        }
-        else{
+        } else {
+            res.status(200).json({ message: "Login successful" });
             console.log("User logged in:", user.firstName + " " + user.lastName);
-            return res.send({ message: "User Login successful" });
         }
-       
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

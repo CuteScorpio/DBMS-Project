@@ -8,11 +8,11 @@ async function fetchProducts() {
             productBox.className = 'product-box';
             productBox.id = '${product.name}';
             productBox.innerHTML = `
-                <img src="../images/${product.name}.jpg" alt="${product.name}" id="product-image"> 
+                <img src="${product.imgURL}" alt="${product.name}" id="product-image"> 
                 <h2>${product.name}</h2>
-                <p>${product.description}</p>
-                <p>Price: $${product.price}</p>
-                <button>Add to Cart</button>
+                <p class="description">${product.description}</p>
+                <p class="price">Price: $${product.price}</p>
+                <button id="${product.name}_button"class="add_to_cart">Add to Cart</button>
             `;
             productContainer.appendChild(productBox);
         });
