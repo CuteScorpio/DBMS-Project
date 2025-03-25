@@ -1,9 +1,9 @@
 let express=require('express');
+let {pendingOrderDisplay}= require('../controller/orderController');
 
 
+let orderRouter=express.Router();
 
-let productRouter=express.Router();
+orderRouter.get("/display",pendingOrderDisplay );
 
-productRouter.get("/display", );
-
-module.exports=productRouter;
+module.exports=orderRouter;

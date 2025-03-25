@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Display</title>
+    <link rel="stylesheet" href="order.css">
+</head>
+<body>
+    <header>
+        <div class="header">
+         <nav class="nav">
+             <div class="nav-logo">
+                 <p>My Shop</p>
+             </div>
+             <div class="nav-menu" id="navMenu">
+                 <ul>
+                     <li><a href="#" class="link active">Orders</a></li>
+                     <li><a href="#" class="link">My Products</a></li>
+                     <li><a href="../addProducts/add.html" class="link">Add Products</a></li>
+                     <li><a href="#" class="link">Contact Us</a></li>
+                     
+                 </ul>
+             </div>
+             <div class="nav-menu-btn">
+                <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+                <div class="cart-icon" id="cartIcon">
+                    <span id="cartCount">0</span>
+                </div>
+            </div>
+            <div class="cart-sidebar" id="cartSidebar">
+                <div class="cart-header">
+                    <span>Shopping Cart</span>
+                    <button id="closeCart">✖</button>
+                </div>
+                <div id="cartItems" class="cart-items"></div>
+            </div>
+        </nav>
+       </div>
+       <div>
+    </header>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+       <h1>Order List</h1>
+       <di class="OrderID"></di>
+       <div class="container" id="orderContainer">
+       </div>
+      <br>
+      </div>
+      
+   <script src="order.js"></script>
+</body>
+</html>

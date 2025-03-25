@@ -3,6 +3,7 @@ let express = require('express');
 let mongoose = require('mongoose');
 const userRouter = require('./App/routes/userRoutes');
 const productRouter = require('./App/routes/productRoutes');
+const orderRouter = require('./App/routes/orderRoutes');
 let app = express();
 
 let cors = require('cors');
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/user', userRouter); 
 app.use('/products', productRouter);
+app.use('/orders',orderRouter)
 
 // connect to MongoDB
 mongoose.connect(process.env.mongoURL)

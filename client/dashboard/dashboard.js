@@ -1,6 +1,6 @@
 async function fetchProducts() {
     try {
-        const response = await fetch('http://localhost:8000/products/display');
+        const response = await fetch('http://localhost:8000/orders/display');
         const products = await response.json();
         const productContainer = document.getElementById('productContainer');
         products.forEach(product => {
