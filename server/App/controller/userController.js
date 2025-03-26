@@ -72,6 +72,13 @@ let userLogout = async (req, res) => {
     }
 };
 
+// let userDisplay = async (req, res )=>{
+
+//     let
+
+// }
+
+
 module.exports = {
     userSignup, userLogin, userLogout
 }

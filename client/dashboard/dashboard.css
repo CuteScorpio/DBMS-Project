@@ -8,6 +8,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #D7CCC8;
+    text-align: center;
 }
 
 .header {
@@ -93,6 +94,96 @@ body {
     padding: 2px 6px;
     font-size: 12px;
 }
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -410px;
+    width: 400px;
+    height: 60%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding: 20px;
+    margin-top: 110px;
+    margin-right:10px;
+    border-radius: 15px;
+}
+
+.sidebar.active {
+    right: 0; 
+}
+
+.sidebar-content{
+    height:65%;
+    overflow-y: auto;
+}
+.sidebar-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+
+.sidebar-item img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+
+.sidebar-item-details {
+    flex: 1;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+
+.sidebar-item-quantity {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+.place-order-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #8bc34a;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.place-order-btn:hover {
+    background-color: #7cb342;
+}
+
+
+
+
 
 
 

@@ -8,6 +8,7 @@ async function fetchOrders() {
 
         orders.forEach(order => {
             let tableHTML = `
+         <div class="tablecontainer">
                 <h3>Order ID: ${order._id}</h3>
                 <h3>Customer: ${order.customerName}</h3>
                 <table border="1">
@@ -20,6 +21,7 @@ async function fetchOrders() {
                         </tr>
                     </thead>
                     <tbody>
+           
             `;
 
             let grandTotal = 0;
@@ -47,6 +49,7 @@ async function fetchOrders() {
                         </tr>
                     </tfoot>
                 </table>
+         </div>
                 <br>
             `;
 
@@ -63,3 +66,7 @@ async function fetchOrders() {
 
 
 fetchOrders();
+
+
+
+

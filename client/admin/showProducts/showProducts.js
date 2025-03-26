@@ -7,6 +7,9 @@ async function fetchProducts() {
         const response = await fetch('http://localhost:8000/products/display');
         const products = await response.json();
         const productContainer = document.getElementById('productContainer');
+        productContainer.innerHTML = ""; 
+
+
         products.forEach(product => {
             const productBox = document.createElement('div');
             productBox.className = 'product-box';
@@ -25,6 +28,7 @@ async function fetchProducts() {
         button.addEventListener('click', async (event) => {
         const productId = event.target.id;
            await deleteProduct(productId);
+           await fetchProducts();
         });
     });
 
@@ -47,13 +51,13 @@ async function deleteProduct(productId) {
         });
 
         if (response.ok) {
-            const productElement = document.getElementById(productName);
+            const productElement = document.getElementById(productId);
             if (productElement) {
                 productElement.remove();
             }
 
             console.log('Product deleted successfully');
-           await fetchProducts();
+           
         } else {
             console.error('Failed to delete product');
         }

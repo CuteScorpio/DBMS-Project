@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Page</title>
+    <link rel="stylesheet" href="bill.css">
+</head>
+<header>
+    <div class="header">
+     <nav class="nav">
+         <div class="nav-logo">
+             <p>My Shop</p>
+         </div>
+         <div class="nav-menu" id="navMenu">
+             <ul>
+                 <li><a href="#" class="link active">Invoice</a></li>
+             </ul>
+         </div>
+         <div class="nav-menu-btn">
+            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
+            <div class="cart-icon" id="cartIcon">
+                <span id="cartCount">0</span>
+            </div>
+        </div>
+    </nav>
+   </div>
+   <div>
+</header>
+<body>
+    <div class="container">
+        <h2>Billing Invoice</h2>
+        <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total</th>
+            </tr>
+            <tbody id="productTable">
+            </tbody>
+        </table>
+        
+        <p class="total" id="grandTotal">Grand Total: 0</p>
+        <p class="total" id="extraCharges">Extra Charges: 5</p>
+        <p class="total" id="totalAmount">Total Amount: 0</p>
+    </div>
+
+    <script src="bill.js"></script>
+</body>
+</html>

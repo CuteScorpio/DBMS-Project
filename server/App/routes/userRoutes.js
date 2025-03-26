@@ -5,7 +5,7 @@ const { userSignup, userLogin, userLogout } = require('../controller/userControl
 userRouter.post('/signup', userSignup);
 userRouter.post('/login', userLogin);
 userRouter.post('/logout', userLogout);
-
+// userRouter.get('display',userDisplay)
 
 
 module.exports = userRouter;

@@ -60,4 +60,26 @@ const productDelete =async (req, res) => {
   }
 }
 
-module.exports = { productDisplay, productAdd , productDelete };
+
+
+
+const productSearch = async (req,res)=>{
+  try {
+    const productName = req.body.productName;
+
+    let result = await productModel.find({
+        $or: [
+            { name: productName },  
+            { category: productName } 
+        ]
+    });
+
+    res.json(result);
+  } catch (error) {
+    console.error("Error searching product:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+}
+}
+
+
+module.exports = { productDisplay, productAdd , productDelete, productSearch };

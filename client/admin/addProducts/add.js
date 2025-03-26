@@ -7,7 +7,7 @@ addForm.addEventListener("submit", async (e) => {
   formData.append("name", document.getElementById("productName").value);
   formData.append("price", document.getElementById("productPrice").value);
   formData.append("quantity", document.getElementById("productQuantity").value);
-  formData.append("category", document.getElementById("productCatgory").value);
+  formData.append("category", document.getElementById("productCategory").value);
   formData.append("description", document.getElementById("productDescription").value);
   formData.append("image", document.getElementById("productImage").files[0]);
 
