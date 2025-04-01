@@ -151,13 +151,25 @@ body {
 .sidebar-item-details {
     flex: 1;
     margin-left: 10px;
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: 600;
+
 }
 
 
 .sidebar-item-quantity {
     font-size: 14px;
     font-weight: bold;
+}
+
+.quantity-increase,.quantity-decrease{
+    background-color: #8bc34a;
+    width: 30px; /* Adjust width */
+    height: 30px; /* Adjust height */
+    font-size: 18px; /* Adjust text size */
+    border: none;
+    border-radius: 5px;
+
 }
 
 

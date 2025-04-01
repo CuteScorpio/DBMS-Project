@@ -55,7 +55,8 @@ loginForm.addEventListener("submit", async (event) =>{
         if(result.message === "Admin login successful"){
             alert("Admin login Successfully!");
             window.location.href = '../admin/admin.html';
-        } else {
+        } else if(result.token) {
+            localStorage.setItem("token", result.token);
             alert("User login Successfully!");
             window.location.href = '../dashboard/dashboard.html';
         }

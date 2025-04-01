@@ -82,4 +82,25 @@ const productSearch = async (req,res)=>{
 }
 
 
-module.exports = { productDisplay, productAdd , productDelete, productSearch };
+const findProduct = async (req , res)=>{
+
+  try {
+    const productId = req.params.id;
+    const product = await productModel.findOne({name:productId});
+    
+    if (!product) {
+      return res.status(404).json({ error: 'Product not found' });
+    }
+
+
+    res.status(200).json(product);
+
+    
+} catch (error) {
+    res.status(500).json({ error: 'Error deleting product' });
+}
+
+}
+
+
+module.exports = { productDisplay, productAdd , productDelete, productSearch , findProduct};
