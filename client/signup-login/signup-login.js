@@ -33,16 +33,47 @@ function register() {
 
 let loginForm = document.getElementById("login");
 
-loginForm.addEventListener("submit", async (event) =>{
+// loginForm.addEventListener("submit", async (event) =>{
+//     event.preventDefault();
+
+//     const email = document.getElementById("login_email").value; 
+//     const password = document.getElementById("login_password").value;
+//     const loginData = {
+//         email,
+//         password
+//     };
+//     const response= await fetch("http://localhost:8000/user/login", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(loginData),
+//     });
+
+//     if (response.ok) {
+//         const result = await response.json();
+//         if(result.message === "Admin login successful"){
+//             alert("Admin login Successfully!");
+//             window.location.href = '../admin/admin.html';
+//         } else if(result.token) {
+//             localStorage.setItem("token", result.token);
+//             alert("User login Successfully!");
+//             window.location.href = '../dashboard/dashboard.html';
+//         }
+//     } else {
+//         console.error("Failed to login user");
+//         alert("Failed to login user");
+//     }
+// });
+
+loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const email = document.getElementById("login_email").value; 
     const password = document.getElementById("login_password").value;
-    const loginData = {
-        email,
-        password
-    };
-    const response= await fetch("http://localhost:8000/user/login", {
+    const loginData = { email, password };
+
+    const response = await fetch("http://localhost:8000/user/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -52,19 +83,25 @@ loginForm.addEventListener("submit", async (event) =>{
 
     if (response.ok) {
         const result = await response.json();
-        if(result.message === "Admin login successful"){
-            alert("Admin login Successfully!");
-            window.location.href = '../admin/admin.html';
-        } else if(result.token) {
+        
+        if (result.token) {
             localStorage.setItem("token", result.token);
             alert("User login Successfully!");
+            if(result.message === "Admin login successful"){
+                alert("Admin login Successfully!");
+                window.location.href = '../admin/admin.html';
+            }else{
             window.location.href = '../dashboard/dashboard.html';
+            }
+        } else {
+            alert("Authentication failed!");
         }
     } else {
-        console.error("Failed to login user");
         alert("Failed to login user");
     }
 });
+
+
 
 let registerForm = document.getElementById("register");
 
