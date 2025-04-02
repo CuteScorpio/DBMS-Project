@@ -68,6 +68,21 @@ body {
     border-bottom: 2px solid #fff;
 }
 
+.cart-header{
+    /* position: relative; */
+    color: #fff;
+    text-decoration: none;
+    
+}
+.fa-solid{
+    font-size:35px;
+    display:flex;
+    margin-top: 10px;
+    justify-content:center;
+    align-items: center;
+}
+
+
 .nav-button .btn {
     width: 130px;
     height: 40px;

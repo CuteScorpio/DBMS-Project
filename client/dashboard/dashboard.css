@@ -173,7 +173,7 @@ body {
 }
 
 
-.place-order-btn {
+#place-order-btn {
     display: block;
     width: 100%;
     padding: 10px;

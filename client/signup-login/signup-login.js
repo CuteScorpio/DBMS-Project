@@ -86,12 +86,13 @@ loginForm.addEventListener("submit", async (event) => {
         
         if (result.token) {
             localStorage.setItem("token", result.token);
-            alert("User login Successfully!");
+        
             if(result.message === "Admin login successful"){
                 alert("Admin login Successfully!");
                 window.location.href = '../admin/admin.html';
             }else{
-            window.location.href = '../dashboard/dashboard.html';
+                alert("User login Successfully!");
+                window.location.href = '../dashboard/dashboard.html';
             }
         } else {
             alert("Authentication failed!");

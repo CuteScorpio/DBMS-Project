@@ -1,3 +1,5 @@
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   const token = localStorage.getItem("token");
 
@@ -147,8 +149,8 @@ document.addEventListener("click", (event) => {
     quantityElement.textContent = parseInt(quantityElement.textContent) + 1;
 
     // Update cart count
-    // const cartCount = document.querySelector(".cart-count");
-    // cartCount.textContent = parseInt(cartCount.textContent) + 1;
+    const cartCount = document.querySelector(".cart-count");
+    cartCount.textContent = parseInt(cartCount.textContent) + 1;
   }
 
   if (event.target.classList.contains("quantity-decrease")) {
@@ -171,11 +173,77 @@ document.addEventListener("click", (event) => {
 
 
       // Update cart count
-      //   const cartCount = document.querySelector(".cart-count");
-      //   cartCount.textContent = parseInt(cartCount.textContent) - 1;
+        const cartCount = document.querySelector(".cart-count");
+        cartCount.textContent = parseInt(cartCount.textContent) - 1;
     
   }
 });
+
+async function placeOrder() {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    alert("You need to be logged in to place an order.");
+    window.location.href = "../signup-login/signup-login.html";
+    return;
+  }
+
+  const cartProducts = document.querySelectorAll(".sidebar-item");
+  const userName = document.getElementById("userName").textContent;
+  const products = [];
+
+  cartProducts.forEach(product => {
+    const productName = product.querySelector("p").textContent;
+    const quantityElement = product.querySelector(".quantity-value");
+    const productQuantity = parseInt(quantityElement.textContent);
+
+    products.push({
+      productName: productName,
+      productQuantity: productQuantity
+    });
+  });
+
+  if (products.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:8000/orders/place", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+        
+      },
+      body: JSON.stringify({products , userName}), // Send correct data format
+    });
+
+    const result = await response.json();
+    console.log(result);
+    if (response.ok) {
+      alert("Order placed successfully!");
+     
+      // Optionally, clear the cart from UI and localStorage
+      document.querySelector(".sidebar-content").innerHTML = ""; // Clear sidebar cart items
+      localStorage.removeItem("cart");  // Clear cart from localStorage
+      document.querySelector(".cart-count").textContent = "0";
+
+      // Redirect to order details page
+      // window.location.href = `order-details.html?orderId=${result.order._id}`;
+    } else {
+      alert(result.message);
+    }
+  } catch (error) {
+    console.error("Error placing the order:", error);
+
+    alert("There was an error placing your order. Please try again.");
+  }
+}
+
+const placeOrderButton = document.getElementById("place-order-btn");
+placeOrderButton.addEventListener("click", placeOrder);
+
 
 // const userProfile =await fetch(`http://localhost:8000/user/profile/${result.user.userId}`, {
 //     method: "GET",

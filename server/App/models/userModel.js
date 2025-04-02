@@ -28,6 +28,6 @@ let userSchema = new mongoose.Schema({
     }
 });
 
-userModel = mongoose.model('users', userSchema);
+let userModel = mongoose.model('users', userSchema);
 
 module.exports = userModel;

@@ -1,16 +1,19 @@
 const mongoose = require('mongoose');
-const userModel = require("../models/userModel")
+
 const orderSchema = new mongoose.Schema({
-  customerName: { 
-    value:userModel.firstName+" "+userModel.lastName,
+  customerId: { 
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'users', // Assuming your user model is named 'Users'
+    required: true
+  },
+  customerName:{
     type: String,
-    required: true,
-    trim: true
+    required:true
   },
   products: [{
     productId: { 
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'Products',
+      ref: 'products',
       required: true
     },
     productQuantity: {
@@ -18,7 +21,6 @@ const orderSchema = new mongoose.Schema({
       required: true,
       min: 1
     },
-
   }],
   billTotal: {
     type: Number,
@@ -34,33 +36,10 @@ const orderSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
-const OrderModel = mongoose.model('Orders', orderSchema);
+const orderModel = mongoose.model('orders', orderSchema);
 
 
 
-const cartSchema = new mongoose.Schema({
 
-  customerName:{ 
-    type: String,
-    required: true,
-    trim: true
-  },
-  products: [{
-    productId: { 
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'Products',
-      required: true
-    },
-    productQuantity: {
-      type: Number,
-      required: true,
-      min: 1
-    },
 
-  }],
-
-})
-
-const cartModel = mongoose.model('cart', cartSchema);
-
-module.exports = {OrderModel , cartModel};
+module.exports = orderModel ;

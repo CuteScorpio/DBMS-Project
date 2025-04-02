@@ -156,3 +156,18 @@ form button {
 form button:hover {
     background-color: #7cb342;
 }
+
+
+.cart-header{
+    /* position: relative; */
+    color: #fff;
+    text-decoration: none;
+    
+}
+.fa-solid{
+    font-size:35px;
+    display:flex;
+    margin-top: 10px;
+    justify-content:center;
+    align-items: center;
+}
