@@ -9,8 +9,7 @@ let productDisplay = async (req, res) => {
 
 let productAdd = async (req, res) => {
   try {
-    console.log("Received Data:", req.body);
-    console.log("Received File:", req.file);
+    
 
     if (!req.file) {
         return res.status(400).json({ message: "Image is required" });
@@ -65,12 +64,13 @@ const productDelete =async (req, res) => {
 
 const productSearch = async (req,res)=>{
   try {
-    const productName = req.body.productName;
+    let productName = req.params.id;
+    productName = String(productName);
 
     let result = await productModel.find({
         $or: [
-            { name: productName },  
-            { category: productName } 
+          { name: { $regex: productName, $options: "i" } },  
+          { category: { $regex: productName, $options: "i" } }
         ]
     });
 

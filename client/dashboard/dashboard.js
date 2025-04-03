@@ -82,7 +82,7 @@ async function fetchProducts() {
                 <img src="${product.imgURL}" alt="${product.name}" id="product-image"> 
                 <h2>${product.name}</h2>
                 <p class="description">${product.description}</p>
-                <p class="price">Price: $${product.price}</p>
+                <p class="price">Price: ₹${product.price}</p>
                 <button id="${product.name}" class="add_to_cart">Add to Cart</button>
             `;
       productContainer.appendChild(productBox);
@@ -253,11 +253,44 @@ placeOrderButton.addEventListener("click", placeOrder);
 // const userName = document.getElementById("userName");
 // userName.textContent = `${userData.firstName} ${userData.lastName}`;
 
-// const searchButton = document.getElementById("searchBarButton")
+const searchButton = document.getElementById("searchBarButton");
+const productContainer = document.getElementById("productContainer");
+searchButton.addEventListener('click', async () => {
+  
+  if (searchButton.innerText === "✖") {
+    productContainer.innerHTML = "";
+    fetchProducts(); // Call fetchProduct() when cross is clicked
+    searchButton.innerText = "Search"; // Reset button text
 
-// searchButton.addEventListener('click', ()=>{
+    return;
+  }
 
-// const searchBar = document.getElementById('searchBar').value
+  const searchBar = document.getElementById('searchBar').value;
+    
+    const response = await fetch(`http://localhost:8000/products/search/${searchBar}`);
+    const products = await response.json();
+    console.log(products);
+if(response.ok){
+  
+  productContainer.innerHTML = "";
+products.forEach((product) => {
+  const productBox = document.createElement("div");
+  productBox.className = "product-box";
+  productBox.id = "${product.name}";
+  productBox.innerHTML = `
+            <img src="${product.imgURL}" alt="${product.name}" id="product-image"> 
+            <h2>${product.name}</h2>
+            <p class="description">${product.description}</p>
+            <p class="price">Price: $${product.price}</p>
+            <button id="${product.name}" class="add_to_cart">Add to Cart</button>
+        `;
+  productContainer.appendChild(productBox);
 
-// const response = await fetch('http://localhost:8000/products/display');
-// const products = await response.json();
+  searchButton.innerText = "✖";
+
+
+});
+  
+}
+
+});
